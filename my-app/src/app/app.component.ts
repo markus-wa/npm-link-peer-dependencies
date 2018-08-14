@@ -1,4 +1,6 @@
 import { Component } from '@angular/core';
+import { PetsService } from 'my-test-lib';
+import { tap } from 'rxjs/operators';
 
 @Component({
   selector: 'app-root',
@@ -7,4 +9,8 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'app';
+
+  constructor(private petsSrv: PetsService) {
+    petsSrv.listPets().pipe(tap());
+  }
 }
